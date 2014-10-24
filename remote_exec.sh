@@ -11,7 +11,7 @@ if [ "$#" == "0" ]; then
 	exit 1
 fi
 
-#NOTE: There is really no need for the hostname beign pased in - could just use the ip, but with both need less checking/logic
+#NOTE: There is really no need for the hostname being passed in - could just use the ip, but with both need less checking/logic
 SERVERHOSTNAME=$1
 shift
 SERVERIP=$1
