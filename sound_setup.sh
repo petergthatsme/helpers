@@ -32,15 +32,36 @@ if [ "$HOSTNAME" == "desktop5" ] ; then
 
     #NOTE: have be sure output quality in /etc/pulse/daemon.conf supports all slave sinks when combining
     #... until pulseaudio finally starts supporting quality on per-sink basis 
-    pacmd load-module module-combine-sink sink_name=combined_sinks slaves=${SINK_AMP_FIIOE17},${SINK_INTERNAL_DESKTOP5}
+    #pacmd load-module module-combine-sink sink_name=combined_sinks slaves=${SINK_AMP_FIIOE17},${SINK_INTERNAL_DESKTOP5}
 
     #the default sink should be both the amp/dac and the internal card
-    pacmd set-default-sink combined_sinks
+    #pacmd set-default-sink combined_sinks
 
+    pacmd set-default-sink ${SINK_AMP_FIIOE17}
     sleep 0.3
-
     pactl -- set-sink-volume ${SINK_AMP_FIIOE17} 75%
-    pactl -- set-sink-volume ${SINK_INTERNAL_DESKTOP5} 75%
+
+#if [ "$HOSTNAME" == "desktop5" ] ; then
+    ##input
+    #pacmd set-default-source ${SOURCE_USB1}
+    ##pacmd set-default-source ${SOURCE_INTERNAL_DESKTOP5}
+
+    ##output
+    #unload_sink combined_sinks
+    
+    #sleep 0.3
+
+    ##NOTE: have be sure output quality in /etc/pulse/daemon.conf supports all slave sinks when combining
+    ##... until pulseaudio finally starts supporting quality on per-sink basis 
+    #pacmd load-module module-combine-sink sink_name=combined_sinks slaves=${SINK_AMP_FIIOE17},${SINK_INTERNAL_DESKTOP5}
+
+    ##the default sink should be both the amp/dac and the internal card
+    #pacmd set-default-sink combined_sinks
+
+    #sleep 0.3
+
+    #pactl -- set-sink-volume ${SINK_AMP_FIIOE17} 75%
+    #pactl -- set-sink-volume ${SINK_INTERNAL_DESKTOP5} 75%
 
 elif [ "$HOSTNAME" == "dakine" ] ; then
     #output
